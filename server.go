@@ -66,10 +66,12 @@ go_total_ram ` + split[1]
 	}
 
 }
+func metricaGET(w http.ResponseWriter, req *http.Request) {
 
+}
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/metrics", metrica).Methods("GET")
+	router.HandleFunc("/metrics", metrica).Methods("POST")
 	// levantamos el servidor en el puerto 4444
 	fmt.Print("encendido")
 	log.Fatal(http.ListenAndServe(":9798", router))

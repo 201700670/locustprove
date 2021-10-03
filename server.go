@@ -36,19 +36,34 @@ func metrica(w http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	if string(body) == "" {
+		//fmt.Println(ioutil.ReadAll(req.Body))
+		strfinal := `# HELP go_total_ram cantidad total.
+	# TYPE go_total_ram gauge
+	go_total_ram ` + "0"
 
-	split := strings.Split(string(body), "=")
-	fmt.Println(split[1])
+		// enviamos en formato json los datos de la ram mediante peticion http
+		fmt.Fprintf(w, strfinal)
+	} else {
+		split := []string{"", "", "", "", ""}
+		split[0] = ""
+		split[1] = "="
+		split[2] = ""
+		split = strings.Split(string(body), "=")
+		if split[1] == "" {
+			split[1] = "0"
+		}
 
-	//fmt.Println(ioutil.ReadAll(req.Body))
-	strfinal := `# HELP go_total_ram cantidad total.
+		fmt.Println(split[1])
+
+		//fmt.Println(ioutil.ReadAll(req.Body))
+		strfinal := `# HELP go_total_ram cantidad total.
 # TYPE go_total_ram gauge
 go_total_ram ` + split[1]
 
-	//println(strfinal)
-
-	// enviamos en formato json los datos de la ram mediante peticion http
-	fmt.Fprintf(w, strfinal)
+		// enviamos en formato json los datos de la ram mediante peticion http
+		fmt.Fprintf(w, strfinal)
+	}
 
 }
 

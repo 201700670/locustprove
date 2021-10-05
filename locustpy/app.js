@@ -35,9 +35,7 @@ app.post('/metrics',  function(req, res){
    go_py_total_tiempo ` + 0
    res.send(strfinal);
     }else{
-        strfinal = `# HELP go_py_total_tiempo cantidad total.
-   # TYPE go_py_total_tiempo gauge
-   go_py_total_tiempo ` + time
+        strfinal = `go_py_total_tiempo ` + time
    app.get('/metrics',  function(req, res){
         res.send(strfinal);
     });

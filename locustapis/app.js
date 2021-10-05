@@ -31,18 +31,9 @@ app.post('/',  function(req, res){
 app.post('/metrics',  function(req, res){
     var {time}  = req.body;
     console.log(time)
-    if(time===undefined){
-        strfinal = `# HELP go_py_total_tiempo cantidad total.
-   # TYPE go_py_total_tiempo gauge
-   go_py_total_tiempo ` + 0
+    
    res.send(strfinal);
-    }else{
-        strfinal = `go_py_total_tiempo ` + time
-   app.get('/metrics',  function(req, res){
-        res.send(strfinal);
-    });
-   res.send(strfinal);
-    }
+    
    //console.log(JSON.stringify(respuesta));
    
 });

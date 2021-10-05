@@ -19,11 +19,11 @@ app.use(bodyParser.json());
 
 app.listen(PORT, ()=> console.log(`Server running on port ${PORT} `));
 app.get('/',  function(req, res){
-    res.send("PARROQUIA WELCOME TO APP!");
+    res.send("BIENVENIDO!");
 });
 
 app.post('/',  function(req, res){
-    res.send("PARROQUIA WELCOME TO APP!");
+    res.send("BIENVENIDO!");
 });
 
 app.post('/metrics',  function(req, res){
@@ -41,6 +41,5 @@ app.post('/metrics',  function(req, res){
     });
    res.send(strfinal);
     }
-   //console.log(JSON.stringify(respuesta));
    
 });

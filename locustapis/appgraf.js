@@ -31,8 +31,10 @@ app.post('/',  function(req, res){
 app.post('/metrics',  function(req, res){
     var {time}  = req.body;
     console.log(time)
-    
-   res.send(strfinal);
+    app.get('/metrics',  function(req, res){        
+            res.send(time);  
+    });
+   res.send("Ingreso Finalizado");
     
    //console.log(JSON.stringify(respuesta));
    
